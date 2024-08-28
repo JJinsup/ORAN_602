@@ -1,0 +1,29 @@
+amf:
+  addr: 10.53.1.2                  # AMF의 주소
+  bind_addr: 10.53.1.1             # AMF로부터의 트래픽을 수신하기 위한 로컬 IP 주소
+
+cu_cp:
+  max_nof_dus: 2                   # 최대 2개의 DU 연결을 허용
+  max_nof_cu_ups: 1                # 최대 1개의 CU-UP 연결을 허용
+  max_nof_ues: 100                 # 최대 100개의 UE 연결을 허용
+  inactivity_timer: 7200            # 비활성화 타이머 설정 (초)
+  plmns:                           # 허용된 PLMN 리스트
+    - 00101
+  tacs:                            # 허용된 TAC 리스트
+    - 7
+  pdu_session_setup_timeout: 3     # PDU 세션 설정 타임아웃 (초)
+
+  f1ap:
+    bind_addr: 127.0.10.1            # CU-CP의 F1AP 바인딩 주소
+
+cu_up:
+  nru:
+    bind_addr: 127.0.10.1          # CU-UP의 NR-U 바인딩 주소
+
+log:
+  filename: /tmp/cu.log
+  all_level: warning
+
+pcap:
+  ngap_enable: false
+  ngap_filename: /tmp/cu_ngap.pcap
