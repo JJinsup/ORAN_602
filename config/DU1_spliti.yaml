@@ -1,0 +1,49 @@
+gnb_id: 411                          # gNB ID
+gnb_id_bit_length: 22                # gNB ID의 비트 길이 설정
+gnb_du_id: 1                         # 첫 번째 DU의 ID 설정
+
+f1ap:
+  cu_cp_addr: 127.0.10.1             # CU-CP의 F1-C 주소
+  bind_addr: 127.0.10.2              # 첫 번째 DU의 F1-C 바인딩 주소
+
+nru:
+  bind_addr: 127.0.10.2              # 첫 번째 DU의 NR-U 바인딩 주소
+
+ru_sdr:
+  device_driver: zmq
+  device_args: tx_port=tcp://127.0.0.1:2000,rx_port=tcp://127.0.0.1:2001,base_srate=11.52e6
+  srate: 11.52
+  tx_gain: 75
+  rx_gain: 75
+
+cell_cfg:
+  dl_arfcn: 368500                   # 첫 번째 DU의 DL ARFCN
+  band: 3                            # NR 밴드
+  channel_bandwidth_MHz: 10          # 채널 대역폭 (MHz)
+  common_scs: 15                     # 서브캐리어 간격 (kHz)
+  plmn: "00101"                      # 방송할 PLMN 코드
+  tac: 7                             # 트래킹 영역 코드
+
+  pdcch:
+    common:
+      ss0_index: 0
+      coreset0_index: 6
+    dedicated:
+      ss2_type: common
+      dci_format_0_1_and_1_1: false
+
+  prach:
+    prach_config_index: 1
+
+log:
+  filename: /tmp/du1.log
+  all_level: warning
+
+pcap:
+  mac_enable: false
+  mac_filename: /tmp/du1_mac.pcap
+  f1ap_enable: false
+  f1ap_filename: /tmp/du1_f1ap.pcap
+  f1u_enable: false
+  f1u_filename: /tmp/du1_f1u.pcap
+
